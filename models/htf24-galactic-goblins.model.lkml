@@ -14,3 +14,5 @@ explore: discovery_facility {}
 explore: planet {}
 
 explore: discovery_telescope {}
+
+explore: habitable_planets {}
