@@ -16,3 +16,15 @@ explore: planet {
 }
 
 explore: discovery_telescope {}
+
+explore: all_planets {}
+
+explore: planets_and_stars {
+  label: "Join between all planets and all stars"
+  from: all_planets
+  join: star {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${planets_and_stars.host_id} = ${star.host_id};;
+  }
+}
