@@ -30,3 +30,5 @@ explore: planets_and_stars {
 }
 
 explore: planet_count_by_star {}
+
+explore: habit_planets_by_fac {}
