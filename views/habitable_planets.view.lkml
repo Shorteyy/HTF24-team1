@@ -1,69 +1,51 @@
 view: habitable_planets {
-  # # You can specify the table name if it's different from the view name:
-  # sql_table_name: my_schema_name.tester ;;
-  #
-  # # Define your dimensions and measures here, like this:
-  # dimension: user_id {
-  #   description: "Unique ID for each user that has ordered"
-  #   type: number
-  #   sql: ${TABLE}.user_id ;;
-  # }
-  #
-  # dimension: lifetime_orders {
-  #   description: "The total number of orders for each user"
-  #   type: number
-  #   sql: ${TABLE}.lifetime_orders ;;
-  # }
-  #
-  # dimension_group: most_recent_purchase {
-  #   description: "The date when each user last ordered"
-  #   type: time
-  #   timeframes: [date, week, month, year]
-  #   sql: ${TABLE}.most_recent_purchase_at ;;
-  # }
-  #
-  # measure: total_lifetime_orders {
-  #   description: "Use this for counting lifetime orders across many users"
-  #   type: sum
-  #   sql: ${lifetime_orders} ;;
-  # }
+  sql_table_name: `planets_dataset.planet` ;;
+  drill_fields: [planet_id]
+
+  dimension: planet_id {
+    primary_key: yes
+    type:  number
+    sql:  ${TABLE}.planet_id ;;
+  }
+
+  dimension: planet_name {
+    type:  string
+    sql: ${TABLE}.planet_name ;;
+  }
+
+  dimension: mass {
+    type:  number
+    sql: 0.1 < ${TABLE}.planet_mass_earth AND ${TABLE}.planet_mass_earth < 10;;
+  }
+
+  dimension: radius {
+    type:  number
+    sql:  0.5 < ${TABLE}.planet_radius_earth AND ${TABLE}.planet_radius_earth < 2.5 ;;
+  }
+
+  dimension: temperature {
+    type:  number
+    sql: 175 < ${TABLE}.equilibrium_temperature_k AND ${TABLE}.equilibrium_temperature_k < 274 ;;
+  }
+
+  dimension: eccentricity {
+    type: number
+    sql: ${TABLE}.eccentricity < 0.2 ;;
+  }
+
+  dimension: flux {
+    type:  number
+    sql: ${TABLE}.insolation_flux_earth > 0.7 and ${TABLE}.insolation_flux_earth < 1.3;;
+  }
+
+  dimension: density {
+    type:  number
+    sql:  1 < ${TABLE}.planet_density ;;
+  }
+
+
 }
 
-# view: habitable_planets {
-#   # Or, you could make this view a derived table, like this:
-#   derived_table: {
-#     sql: SELECT
-#         user_id as user_id
-#         , COUNT(*) as lifetime_orders
-#         , MAX(orders.created_at) as most_recent_purchase_at
-#       FROM orders
-#       GROUP BY user_id
-#       ;;
-#   }
-#
-#   # Define your dimensions and measures here, like this:
-#   dimension: user_id {
-#     description: "Unique ID for each user that has ordered"
-#     type: number
-#     sql: ${TABLE}.user_id ;;
-#   }
-#
-#   dimension: lifetime_orders {
-#     description: "The total number of orders for each user"
-#     type: number
-#     sql: ${TABLE}.lifetime_orders ;;
-#   }
-#
-#   dimension_group: most_recent_purchase {
-#     description: "The date when each user last ordered"
-#     type: time
-#     timeframes: [date, week, month, year]
-#     sql: ${TABLE}.most_recent_purchase_at ;;
-#   }
-#
-#   measure: total_lifetime_orders {
-#     description: "Use this for counting lifetime orders across many users"
-#     type: sum
-#     sql: ${lifetime_orders} ;;
-#   }
-# }
+
+
+
