@@ -36,3 +36,5 @@ explore: habit_planets_by_fac {}
 explore: planet_by_telescope {}
 
 explore: total_planet_by_fac {}
+
+explore: total_planets_by_star {}
