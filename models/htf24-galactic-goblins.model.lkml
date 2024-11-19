@@ -44,3 +44,5 @@ explore: total_planets_by_telescope {}
 explore: percent_habit_by_star {}
 
 explore: percent_habit_planet_by_fac {}
+
+explore: percent_habit_planet_by_telescope {}
