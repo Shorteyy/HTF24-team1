@@ -115,4 +115,9 @@ view: planet {
     type: count
     drill_fields: [planet_id, planet_name]
   }
+
+  measure: toCelsius {
+    type: number
+    sql: ${TABLE}.equilibrium_temperature_k - 273.15;;
+  }
 }
