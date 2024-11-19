@@ -18,3 +18,7 @@ explore: planet {
 explore: discovery_telescope {}
 
 explore: habitable_planets {}
+
+explore: test_planets {
+  from: habitable_planets
+}
