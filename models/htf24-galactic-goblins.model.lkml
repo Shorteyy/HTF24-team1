@@ -28,3 +28,5 @@ explore: planets_and_stars {
     sql_on: ${planets_and_stars.host_id} = ${star.host_id};;
   }
 }
+
+explore: planet_count_by_star {}
